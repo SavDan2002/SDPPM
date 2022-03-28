@@ -23,7 +23,6 @@ function useInputValue(defaultValue = '') {
   }
 
 function Join ({ onJoin }) {
-    //const value = 'Daniil'
     const input = useInputValue('')
 
     function submitCode(event) {
@@ -36,8 +35,8 @@ function Join ({ onJoin }) {
   }
     return (
     <form style={{ marginBottom: '1rem' }} onSubmit={submitCode}>
-      <input {...input.bind} />
-      <button type='submit'>Add todo</button>
+      <input {...input.bind} /><br />
+      <button type='submit'>join</button>
     </form>)
 
 }
