@@ -14,13 +14,13 @@ function Name({ onChange }) {
     }
 
   return (
-    <div>
-      <h3>Name: </h3>
-      <form style={{marginBottom: '1rem'}} onSubmit={submitName}> 
-        <input type='text' value={value} onChange={event => setValue(event.target.value)} />
-        {console.log(value)}
-        <button type='submit'>setName</button>
-      </form>
+    <div style={{background: '#7851a9', padding: '.5rem 1rem'}}>
+        <h3>Write your name: </h3>
+        <form onSubmit={submitName}> 
+            <input type='text' value={value} onChange={event => setValue(event.target.value)} />
+            &nbsp;
+            <button className='but' type='submit'>setName</button>
+        </form>
     </div>
   )
 }
