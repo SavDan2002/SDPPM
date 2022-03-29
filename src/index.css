@@ -12,15 +12,30 @@ code {
     monospace;
 }
 
-.main {
-  margin: 2em; 
-  background-color: #42aaff;
-  width: 600px;
+p {
+  text-align: left;
+  font-size: 1em;
+  margin-top: 1em;
 }
 
-.but {
+.main {
+  margin: 2em;
+  white-space: nowrap;
+}
+
+.block {
+  width: 300px;
+  height: 120px;
+  background: #5d76cb;
+  padding: .5rem 1rem;
+  border: 3px solid #000066;
+}
+
+.button {
   background: blue;
   border-radius: 10%;
   color: #fff;
   border: none;
+  height: 20px;
+  width: 100px;
 }
