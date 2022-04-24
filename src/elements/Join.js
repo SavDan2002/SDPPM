@@ -15,7 +15,6 @@ const styles = {
 
 function useInputValue(defaultValue = '') {
     const [value, setValue] = useState(defaultValue)
-    const classes = []
 
     return {
         bind: {
@@ -30,7 +29,7 @@ function useInputValue(defaultValue = '') {
 }
 
 function Join(props) {
-    const input = useInputValue('')
+    const input = useInputValue()
 
     function submitCode(event) {
         event.preventDefault()
@@ -39,6 +38,9 @@ function Join(props) {
             props.onJoin(input.value())
             input.clear()
         }
+
+        props.onJoin()
+
     }
 
     return (
@@ -53,7 +55,8 @@ function Join(props) {
 }
 
 Join.propTypes = {
-    onJoin: PropTypes.func.isRequired
+    onJoin: PropTypes.func.isRequired,
+    name: PropTypes.string
 }
 
 export default Join
