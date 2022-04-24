@@ -35,7 +35,6 @@ function Create(props) {
             props.setModalActive(true)
         }
         input.clear()
-        event.preventDefault()
     }
 
     return (

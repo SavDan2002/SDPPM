@@ -34,13 +34,13 @@ function Join(props) {
     function submitCode(event) {
         event.preventDefault()
 
-        if (input.value().trim()) {
-            props.onJoin(input.value())
-            input.clear()
+        let code = Number.parseInt(input.value().trim())
+        if (!isNaN(code)) {
+            props.onJoin(code)
+        } else {
+            props.setModalActive(true)
         }
-
-        props.onJoin()
-
+        input.clear()
     }
 
     return (
@@ -56,7 +56,8 @@ function Join(props) {
 
 Join.propTypes = {
     onJoin: PropTypes.func.isRequired,
-    name: PropTypes.string
+    name: PropTypes.string,
+    setModalActive: PropTypes.func.isRequired
 }
 
 export default Join
