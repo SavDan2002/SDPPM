@@ -25,8 +25,12 @@ const onConnected = () => {
         currentPlayerNumber: 2,
         Action:"PLAYERJOIN"
     };*/
-    stompClient.subscribe('/user/queue/create', onMessageReceived)
-    stompClient.send("/app/create", {}, JSON.stringify(chatMessage))
+    if (gameCode === -1) {
+        stompClient.subscribe('/user/queue/create', onMessageReceived)
+        stompClient.send("/app/create", {}, JSON.stringify(chatMessage))
+    } else {
+        stompClient.subscribe('/topic/room/' + chatMessage.roomId.toString(), onMessageReceived)
+    }
 }
 
 
