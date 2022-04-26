@@ -1,9 +1,14 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
+import Modal from "../Modal/Modal"
 
 const styles = {
     div: {
-        width: '650px' //костыль
+    },
+    error: {
+        float: 'right',
+        color: 'red',
+        fontSize: '11pt'
     }
 }
 
@@ -15,7 +20,8 @@ function useInputValue(defaultValue = '') {
             value,
             onChange: event => setValue(event.target.value),
             placeholder: "Введите количество игроков",
-            fontSize: '100px'
+            fontSize: '100px',
+            size: '23'
         },
         clear: () => setValue(''),
         value: () => value
@@ -25,6 +31,9 @@ function useInputValue(defaultValue = '') {
 function Create(props) {
     const input = useInputValue()
 
+    const [modalCreateActive, setModalCreateActive] = React.useState(false)
+    const [error, setError] = React.useState('')
+
     function submitCode(event) {
         event.preventDefault()
 
@@ -32,18 +41,25 @@ function Create(props) {
         if (number >= 2 && number <= 10) {
             props.onConnect(number)
         } else {
-            props.setModalActive(true)
+            //props.setErrorActive(true)
+            setError('Число игроков должно быть от 2 до 10!')
         }
         input.clear()
     }
 
     return (
-        <div className='block' style={styles.div}>
-            <form onSubmit={submitCode}>
-                <p>To create a game click create</p>
-                <input {...input.bind} /><br/>
-                <button className='button' type='submit'>create</button>
-            </form>
+        <div style={styles.div}>
+            <button onClick={() => setModalCreateActive(true)}>CREATE GAME</button>
+            <Modal active={modalCreateActive} setActive={setModalCreateActive}>
+                <form onSubmit={submitCode}>
+                    <p>Username: {props.name}</p>
+                    <p style={styles.error}>{error}</p>
+                    <input {...input.bind} /><br/>
+                    <button className='button' type='submit'>create</button>
+                    &nbsp;&nbsp;
+                    <button className='button' onClick={() => setModalCreateActive(false)}>cancel</button>
+                </form>
+            </Modal>
         </div>)
 
 }
@@ -51,7 +67,6 @@ function Create(props) {
 Create.propTypes = {
     onConnect: PropTypes.func.isRequired,
     name: PropTypes.string,
-    setModalActive: PropTypes.func.isRequired
 }
 
 export default Create

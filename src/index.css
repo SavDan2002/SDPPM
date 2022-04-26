@@ -40,3 +40,52 @@ p {
   width: 100px;
 }
 
+/*.ul {
+
+}
+
+.ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem 1rem;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin-bottom: .5rem;
+}*/
+
+.ul {
+  list-style: none;
+  padding: 0;
+  border: 1px solid rgba(0,0,0, .2);
+}
+
+.ul li {
+  overflow: hidden;
+  padding: 6px 10px;
+  font-size: 20px;
+}
+
+.ul li:first-child {
+  font-weight: bold;
+  padding: 15px 0 10px 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(0,0,0, .2);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: #679bb7;
+  font-size: 24px;
+  box-shadow: 0 10px 20px -5px rgba(0,0,0, .2);
+}
+
+
+.ul span {
+  float: left;
+  width: 75%;
+  color: #7C7D7F;
+}
+.ul em {
+  float: right;
+  color: #9c836e;
+  font-weight: bold;
+}
