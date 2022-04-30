@@ -57,7 +57,7 @@ function Create(props) {
                     <input {...input.bind} /><br/>
                     <button className='button' type='submit'>create</button>
                     &nbsp;&nbsp;
-                    <button className='button' onClick={() => setModalCreateActive(false)}>cancel</button>
+                    <button className='button' onClick={() => setModalCreateActive(false)}>cancel</button> {/*Почему-то при нажатии отправляет код*/}
                 </form>
             </Modal>
         </div>)
