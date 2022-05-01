@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
+import { useNavigate } from "react-router-dom";
 import Modal from "../Modal/Modal";
 
 const styles = {
@@ -30,6 +31,7 @@ function useInputValue(defaultValue = '') {
 
 function Join(props) {
     const input = useInputValue()
+    const navigate = useNavigate()
 
     const [modalJoinActive, setModalJoinActive] = React.useState(false)
     const [error, setError] = React.useState('')
@@ -39,9 +41,8 @@ function Join(props) {
 
         let code = Number.parseInt(input.value().trim())
         if (!isNaN(code)) {
-            props.onJoin(code)
+            navigate('/game', {replace: true, state: {name: props.name, numberOfPlayers: -1, code: code}})
         } else {
-            //props.setErrorActive(true)
             setError('Код может состоять только из цифр!')
         }
         input.clear()
@@ -65,8 +66,7 @@ function Join(props) {
 }
 
 Join.propTypes = {
-    onJoin: PropTypes.func.isRequired,
-    name: PropTypes.string,
+    name: PropTypes.string.isRequired
 }
 
 export default Join
