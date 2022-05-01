@@ -1,0 +1,78 @@
+[33mcommit b26b41e572f001f55cd46e587350a0bebaca2174[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: SavDan2002 <d.savelev1@g.nsu.ru>
+Date:   Sun May 1 17:45:02 2022 +0700
+
+    add routing and wait page
+
+[33mcommit 5ad78e271cf9bae5918699ee3c8d1486311e3b77[m
+Author: SavDan2002 <d.savelev1@g.nsu.ru>
+Date:   Sat Apr 30 16:26:33 2022 +0700
+
+    start adding pages
+
+[33mcommit 97bb961304f6f4eeaed0d2aad9411c25662e69c2[m
+Author: SavDan2002 <d.savelev1@g.nsu.ru>
+Date:   Tue Apr 26 10:30:10 2022 +0700
+
+    add modal for create and join
+
+[33mcommit dc0a34bb9b343b289e65817cf5af3685316670dd[m
+Author: SavDan2002 <d.savelev1@g.nsu.ru>
+Date:   Mon Apr 25 16:20:18 2022 +0700
+
+    ...
+
+[33mcommit 46fae4c0624080c0f9b23f7f79956088aa969ee1[m
+Author: SavDan2002 <d.savelev1@g.nsu.ru>
+Date:   Mon Apr 25 15:38:31 2022 +0700
+
+    websocket 1.0
+
+[33mcommit 625f008012048ba515617cba13f25fac60b938c1[m
+Author: SavDan2002 <d.savelev1@g.nsu.ru>
+Date:   Sun Apr 24 22:59:32 2022 +0700
+
+    websocket started 1.1
+
+[33mcommit e8b19ee547ca22ba008ce14e0345c0e28f6647e8[m
+Author: SavDan2002 <d.savelev1@g.nsu.ru>
+Date:   Sun Apr 24 21:48:03 2022 +0700
+
+    websocket started
+
+[33mcommit bf3b77d32b8756ed6d075be27a4ba7d860390aed[m
+Merge: 485be1c b3b7857
+Author: SavDan2002 <d.savelev1@g.nsu.ru>
+Date:   Tue Mar 29 18:04:08 2022 +0700
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 485be1cc29b36324830b94b6f494f103ef1fd7ec[m
+Author: SavDan2002 <d.savelev1@g.nsu.ru>
+Date:   Tue Mar 29 17:58:57 2022 +0700
+
+    2.1 design a bit better
+
+[33mcommit b3b78574482739ca51c0b70e3cfccada2e55e379[m
+Author: SavDan2002 <70786128+SavDan2002@users.noreply.github.com>
+Date:   Tue Mar 29 08:50:53 2022 +0700
+
+    delete context
+
+[33mcommit 4dee5ad213b899d017d6fcea4ed4512a784c25f1[m
+Author: SavDan2002 <d.savelev1@g.nsu.ru>
+Date:   Tue Mar 29 08:32:14 2022 +0700
+
+    2.0 menu
+
+[33mcommit 7916a97c7b5dc3210f20402ec3d814dd4314520e[m
+Author: SavDan2002 <d.savelev1@g.nsu.ru>
+Date:   Tue Mar 29 06:17:58 2022 +0700
+
+    draft version
+
+[33mcommit 118e66a4fd2fd21077f078bbacc87dc67ca20005[m
+Author: SavDan2002 <d.savelev1@g.nsu.ru>
+Date:   Tue Mar 29 02:43:34 2022 +0700
+
+    start

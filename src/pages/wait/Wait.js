@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {useLocation, useNavigate} from 'react-router-dom'
 import SockJS from 'sockjs-client'
 import {over} from "stompjs";
@@ -67,11 +67,14 @@ const onWaitMessageReceived = (payload)=>{
     console.log(payloadData)
     let chatMessage = {
         currentPlayerNumber: payloadData.currentPlayerNumber,
-        Action: payloadData.Action
+        maxNumber: payloadData.maxPlayerNumber,
+        action: payloadData.action
     }
     playerCounter = chatMessage.currentPlayerNumber
-    if (chatMessage.Action === "GAMESTART"/* || playerCounter === number*/) {
-        navigate('/wait/' + gameCode.toString(), {replace: true, state: {numberOfPlayers: number, gameCode: gameCode, stompClient: 3}})
+    number = chatMessage.maxNumber
+    if (chatMessage.action === "GAMESTART") {
+        console.log('Game started')
+        navigate('/game/' + gameCode.toString(), {replace: true, state: {numberOfPlayers: number, gameCode: gameCode, stompClient: 3}})
     }
 }
 
@@ -85,7 +88,7 @@ function start() {
     playerCounter++
 }
 
-function Game() {
+function Wait() {
     let [temp, setTemp] = React.useState(0)
     navigate = useNavigate()
     state1 = useLocation()
@@ -100,4 +103,4 @@ function Game() {
     )
 }
 
-export default Game;
+export default Wait;

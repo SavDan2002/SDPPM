@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom'
 
-function Game2() {
+function Game() {
     const {id} = useParams();
     return (
         <div>
@@ -10,4 +10,4 @@ function Game2() {
     )
 }
 
-export default Game2;
+export default Game;
