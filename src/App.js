@@ -4,7 +4,6 @@ import Home from './pages/home/Home'
 import Wait from './pages/wait/Wait'
 import Game from './pages/game/Game'
 import Layout from './Layout'
-import Players from "./Players";
 
 function App() {
     return (
@@ -13,10 +12,8 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Layout/>}>
                         <Route index element={<Home/>}/>
-                        <Route path="/game" element={<Players/>}>
-                            <Route index element={<Wait/>}/>
-                            <Route path="/game/:id" element={<Game/>}/>
-                        </Route>
+                        <Route path="/game" element={<Wait/>}/>
+                        <Route path="/game/:id" element={<Game/>}/>
                     </Route>
                 </Routes>
             </Router>

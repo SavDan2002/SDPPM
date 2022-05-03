@@ -13,7 +13,7 @@ let gameCode = -1
 let playerCounter = 0
 
 const connect = () => {
-    let Sock = new SockJS('https://mem.borodun.works/api/v1/ws')
+    let Sock = new SockJS('https://whatmemareyou.tech/api/v1/ws')
     stompClient = over(Sock)
     stompClient.connect({}, onConnected, onError)
 }
@@ -65,6 +65,13 @@ const onJoin = () => {
 const onWaitMessageReceived = (payload) => {
     let payloadData = JSON.parse(payload.body)
     console.log(payloadData)
+    if (payloadData.type === "GameStart") {
+        console.log('Game started')
+        navigate('/game/' + gameCode.toString(), {
+            replace: true,
+            state: {players: payloadData.players}
+        })
+    }
     let chatMessage = {
         type: payloadData.type,
         current: payloadData.current,
@@ -73,13 +80,6 @@ const onWaitMessageReceived = (payload) => {
     }
     playerCounter = chatMessage.current
     number = chatMessage.maxNumber
-    if (chatMessage.type === "GameStart") {
-        console.log('Game started')
-        navigate('/game/' + gameCode.toString(), {
-            replace: true,
-            state: {numberOfPlayers: number, gameCode: gameCode}
-        })
-    }
 }
 
 const onError = (err) => {

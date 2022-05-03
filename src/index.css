@@ -39,9 +39,3 @@ p {
   height: 20px;
   width: 100px;
 }
-
-.players {
-  position: absolute;
-  top: 0px;
-  right: 20px;
-}
