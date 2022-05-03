@@ -7,7 +7,7 @@ function Home() {
     const [name, setName] = React.useState('anonim')
     return (
         <div className="main">
-            <h1>Nastolka</h1>
+            <h1>WhatIsMem</h1>
             <Name setName={setName}/>
             <Join name={name}/>
             <Create name={name}/>

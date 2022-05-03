@@ -1,11 +1,10 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Modal from "../Modal/Modal"
 
 const styles = {
-    div: {
-    },
+    div: {},
     error: {
         float: 'right',
         color: 'red',
@@ -57,8 +56,6 @@ function Create(props) {
                     <p style={styles.error}>{error}</p>
                     <input {...input.bind} /><br/>
                     <button className='button' type='submit'>create</button>
-                    &nbsp;&nbsp;
-                    <button className='button' onClick={() => setModalCreateActive(false)}>cancel</button> {/*Почему-то при нажатии отправляет код*/}
                 </form>
             </Modal>
         </div>)

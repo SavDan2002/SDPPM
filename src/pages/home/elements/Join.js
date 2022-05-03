@@ -1,11 +1,10 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Modal from "../Modal/Modal";
 
 const styles = {
-    div: {
-    },
+    div: {},
     error: {
         float: 'right',
         color: 'red',
@@ -57,8 +56,6 @@ function Join(props) {
                     <p style={styles.error}>{error}</p>
                     <input {...input.bind} /><br/>
                     <button className='button' type='submit'>join</button>
-                    &nbsp;&nbsp;
-                    <button className='button' onClick={() => setModalJoinActive(false)}>cancel</button>
                 </form>
             </Modal>
         </div>

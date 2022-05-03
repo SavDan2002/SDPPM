@@ -12,10 +12,10 @@ let number = -1
 let gameCode = -1
 let playerCounter = 0
 
-const connect = ()=>{
+const connect = () => {
     let Sock = new SockJS('https://mem.borodun.works/api/v1/ws')
     stompClient = over(Sock)
-    stompClient.connect({},onConnected, onError)
+    stompClient.connect({}, onConnected, onError)
 }
 
 const onConnected = () => {
@@ -29,52 +29,56 @@ const onConnected = () => {
 
 const onCreate = () => {
     let chatMessage = {
-        numberOfPlayer: state1.state.numberOfPlayers,
-        roomId: state1.state.code
+        type: "Create",
+        numberOfPlayer: state1.state.numberOfPlayers
     }
-    number = state1.state.numberOfPlayers
     stompClient.subscribe('/user/queue/create', onMessageReceived)
     stompClient.send("/app/create", {}, JSON.stringify(chatMessage))
 }
 
-const onMessageReceived = (payload)=>{
+const onMessageReceived = (payload) => {
 
     let payloadData = JSON.parse(payload.body)
     console.log(payloadData)
     let chatMessage = {
-        roomId: payloadData.roomId,
+        type: "Connect",
         playerName: state1.state.name
     };
-    gameCode = chatMessage.roomId
+    gameCode = payloadData.roomID
+    number = payloadData.numberOfPlayers
 
-    stompClient.send("/app/room/" + chatMessage.roomId.toString(), {}, JSON.stringify(chatMessage))
-    stompClient.subscribe('/topic/room/' + chatMessage.roomId.toString(), onWaitMessageReceived)
+    stompClient.subscribe('/topic/room/' + gameCode.toString(), onWaitMessageReceived)
+    stompClient.send("/app/room/" + gameCode.toString(), {}, JSON.stringify(chatMessage))
 }
 
 const onJoin = () => {
     let chatMessage = {
-        roomId: state1.state.code,
+        type: "Connect",
         playerName: state1.state.name
     }
-    gameCode = chatMessage.roomId
+    gameCode = state1.state.code
 
-    stompClient.send("/app/room/" + chatMessage.roomId.toString(), {}, JSON.stringify(chatMessage))
-    stompClient.subscribe('/topic/room/' + chatMessage.roomId.toString(), onWaitMessageReceived)
+    stompClient.subscribe('/topic/room/' + gameCode.toString(), onWaitMessageReceived)
+    stompClient.send("/app/room/" + gameCode.toString(), {}, JSON.stringify(chatMessage))
 }
 
-const onWaitMessageReceived = (payload)=>{
+const onWaitMessageReceived = (payload) => {
     let payloadData = JSON.parse(payload.body)
     console.log(payloadData)
     let chatMessage = {
-        currentPlayerNumber: payloadData.currentPlayerNumber,
-        maxNumber: payloadData.maxPlayerNumber,
+        type: payloadData.type,
+        current: payloadData.current,
+        maxNumber: payloadData.max,
         action: payloadData.action
     }
-    playerCounter = chatMessage.currentPlayerNumber
+    playerCounter = chatMessage.current
     number = chatMessage.maxNumber
-    if (chatMessage.action === "GAMESTART") {
+    if (chatMessage.type === "GameStart") {
         console.log('Game started')
-        navigate('/game/' + gameCode.toString(), {replace: true, state: {numberOfPlayers: number, gameCode: gameCode, stompClient: 3}})
+        navigate('/game/' + gameCode.toString(), {
+            replace: true,
+            state: {numberOfPlayers: number, gameCode: gameCode}
+        })
     }
 }
 
